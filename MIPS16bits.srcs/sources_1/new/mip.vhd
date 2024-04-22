@@ -1,16 +1,23 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
-
+use IEEE.STD_LOGIC_UNSIGNED.all;
 entity mip is
     Port (
         clk: in std_logic;
-        reset: in std_logic
+        btn: in std_logic_vector(4 downto 0);
+        sw: in std_logic_vector(15 downto 0);
+        
+        cat:out std_logic_vector(6 downto 0);
+        an:out std_logic_vector(3 downto 0); --3 downto 0 basys
+        led: out std_logic_vector(15 downto 0)
 
     );
 end mip;
 
 architecture Behavioral of mip is
+    signal btns:std_logic_vector(4 downto 0);
+
     signal pc: std_logic_vector(15 downto 0);
     signal instruction: std_logic_vector(15 downto 0);
     signal branchAdr: std_logic_vector(15 downto 0);
@@ -26,14 +33,52 @@ architecture Behavioral of mip is
     signal RegDst, ExtOp, ALUSrc, Branch, Jump, MemWrite, MemtoReg, RegWrite: std_logic;
     signal ALUOp: std_logic_vector(2 downto 0);
     signal mux3: std_logic_vector(15 downto 0);
+    
+    signal ss: std_logic_vector(15 downto 0);
 begin
-
+    ssd: entity work.SSD(Behavioral)
+    port map(
+        digit=>ss,
+        clk=>clk,
+        cat=>cat,
+        an=>an
+    );
+    deb1: entity work.debouncer(Behavioral)
+    port map(
+        clk=>clk,
+        btn=>btn(0),
+        en=>btns(0)
+        );
+    deb2: entity work.debouncer(Behavioral)
+        port map(
+            clk=>clk,
+            btn=>btn(1),
+            en=>btns(1)
+            );
+    deb3: entity work.debouncer(Behavioral)
+            port map(
+                clk=>clk,
+                btn=>btn(2),
+                en=>btns(2)
+                );
+    deb4: entity work.debouncer(Behavioral)
+                port map(
+                    clk=>clk,
+                    btn=>btn(3),
+                    en=>btns(3)
+                    );
+    deb5: entity work.debouncer(Behavioral)
+                    port map(
+                        clk=>clk,
+                        btn=>btn(4),
+                        en=>btns(4)
+                        );
     -- Instruction Fetch
     IFetch: entity work.InstructionFetch(Behavioral)
         port map (
-            clk => clk,
+            clk => btns(0),
             en => '1',  -- Assuming always enabled for simplicity
-            pcReset => reset,
+            pcReset => btns(1),
             branchAdr => branchAdr,
             jumpAdr => jumpAdr,
             jmpCtrl => jmpCtrl,
@@ -41,7 +86,6 @@ begin
             instruction => instruction,
             pc_out => pc
         );
-        
     -- Main Control Unit
     MCtrl: entity work.MainControl(Behavioral)
         port map (
@@ -63,7 +107,7 @@ begin
             clk => clk,
             instr => instruction,
             writeData => writeData,
-            en => '1',  -- Assuming always enabled for simplicity
+            en => '1', 
             regWrite => RegWrite,
             regDst => RegDst,
             extOp => ExtOp,
@@ -114,5 +158,19 @@ begin
         end if;
     end process;
     writeData<=mux3;
-
+    
+    process(sw)
+    begin
+    case sw(7 downto 5) is
+    when "000" => ss<=instruction;
+    when "001" => ss<=pc;
+    when "010" => ss<=rd1;
+    when "011"=> ss<=rd2;
+    when "100"=> ss<=ext_imm;
+    when "101"=> ss<=ALURes;
+    when "110"=> ss<=MemData;
+    when others => ss<=writeData;
+    end case;
+    end process;
+    
 end Behavioral;

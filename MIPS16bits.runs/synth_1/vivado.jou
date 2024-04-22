@@ -1,0 +1,13 @@
+#-----------------------------------------------------------
+# Vivado v2022.2 (64-bit)
+# SW Build 3671981 on Fri Oct 14 05:00:03 MDT 2022
+# IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
+# Start of session at: Mon Apr 22 01:05:28 2024
+# Process ID: 3868
+# Current directory: C:/Users/Zach/Desktop/ComputerS/year2/semester II/Computer Architecture/MIPS16bits/MIPS16bits.runs/synth_1
+# Command line: vivado.exe -log mip.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source mip.tcl
+# Log file: C:/Users/Zach/Desktop/ComputerS/year2/semester II/Computer Architecture/MIPS16bits/MIPS16bits.runs/synth_1/mip.vds
+# Journal file: C:/Users/Zach/Desktop/ComputerS/year2/semester II/Computer Architecture/MIPS16bits/MIPS16bits.runs/synth_1\vivado.jou
+# Running On: DESKTOP-6I43JMK, OS: Windows, CPU Frequency: 2918 MHz, CPU Physical cores: 10, Host memory: 16866 MB
+#-----------------------------------------------------------
+source mip.tcl -notrace

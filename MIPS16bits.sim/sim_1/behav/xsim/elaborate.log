@@ -1,0 +1,7 @@
+Vivado Simulator v2022.2
+Copyright 1986-1999, 2001-2022 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2022.2/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot mip_behav xil_defaultlib.mip -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+ERROR: [VRFC 10-666] expression has 3 elements; expected 16 [C:/Users/Zach/Desktop/ComputerS/year2/semester II/Computer Architecture/MIPS16bits/MIPS16bits.srcs/sources_1/new/registerFile.vhd:37]
+ERROR: [XSIM 43-3321] Static elaboration of top level VHDL design unit mip in library work failed.

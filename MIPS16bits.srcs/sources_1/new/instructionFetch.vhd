@@ -1,22 +1,3 @@
-----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date: 08.04.2024 17:56:11
--- Design Name: 
--- Module Name: InstructionFetch - Behavioral
--- Project Name: 
--- Target Devices: 
--- Tool Versions: 
--- Description: 
--- 
--- Dependencies: 
--- 
--- Revision:
--- Revision 0.01 - File Created
--- Additional Comments:
--- 
-----------------------------------------------------------------------------------
 
 
 library IEEE;
@@ -47,15 +28,19 @@ signal pc:std_logic_vector(15 downto 0);
 component Memory is 
 Port 
   ( 
-    adress:in std_logic_vector(3 downto 0);
+    address:in std_logic_vector(3 downto 0);
     clk: in std_logic;
     en:in std_logic;
-    instruction:out std_logic_vector(15 downto 0) 
+    instr:out std_logic_vector(15 downto 0) 
   );
   end component;
   
 begin
-mem:Memory port map(pc(3 downto 0),clk, en, instruction);
+mem:Memory port map(
+        address=>pc(3 downto 0),
+        clk=>clk,
+        en=> en,
+        instr=>instruction);
 
 process(pcSrc)
 begin
