@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
-| Date         : Mon Apr 22 01:07:33 2024
+| Date         : Tue Apr 23 01:04:18 2024
 | Host         : DESKTOP-6I43JMK running 64-bit major release  (build 9200)
 | Command      : report_drc -file mip_drc_routed.rpt -pb mip_drc_routed.pb -rpx mip_drc_routed.rpx
 | Design       : mip
@@ -35,7 +35,7 @@ Table of Contents
 -----------------
 PDRC-153#1 Warning
 Gated clock check  
-Net IFetch/mem/instr_reg[2]_0 is a gated clock net sourced by a combinational pin IFetch/mem/zero_reg_i_2/O, cell IFetch/mem/zero_reg_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Net IFetch/mem/instr_reg[1]_2 is a gated clock net sourced by a combinational pin IFetch/mem/zero_reg_i_2/O, cell IFetch/mem/zero_reg_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
 Related violations: <none>
 
 

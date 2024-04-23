@@ -157,7 +157,7 @@ begin
             zero <= 'X';
     end case;
 end process;
-
+ALURes<=res1;
 process(pc_1, ext_imm)
 begin
         brAd<=ext_imm+pc_1;

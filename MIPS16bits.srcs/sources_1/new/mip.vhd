@@ -77,7 +77,7 @@ begin
     IFetch: entity work.InstructionFetch(Behavioral)
         port map (
             clk => btns(0),
-            en => '1',  -- Assuming always enabled for simplicity
+            en => '1',  
             pcReset => btns(1),
             branchAdr => branchAdr,
             jumpAdr => jumpAdr,
@@ -89,7 +89,7 @@ begin
     -- Main Control Unit
     MCtrl: entity work.MainControl(Behavioral)
         port map (
-            input => instruction(15 downto 13), -- Adjust the bit range as per your instruction format
+            input => instruction(15 downto 13), 
             RegDst => RegDst,
             ExtOp => ExtOp,
             ALUSrc => ALUSrc,
