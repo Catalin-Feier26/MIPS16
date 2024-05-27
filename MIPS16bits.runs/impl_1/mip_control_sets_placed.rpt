@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
-| Date         : Tue Apr 23 01:04:03 2024
+| Date         : Mon May 27 18:05:02 2024
 | Host         : DESKTOP-6I43JMK running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file mip_control_sets_placed.rpt
 | Design       : mip
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |     8 |
-|    Minimum number of control sets                        |     8 |
+| Total control sets                                       |     4 |
+|    Minimum number of control sets                        |     4 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    26 |
+| Unused register locations in slices containing registers |    14 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,12 +39,12 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |     8 |
-| >= 0 to < 4        |     3 |
-| >= 4 to < 6        |     2 |
-| >= 6 to < 8        |     0 |
+| Total control sets |     4 |
+| >= 0 to < 4        |     1 |
+| >= 4 to < 6        |     0 |
+| >= 6 to < 8        |     1 |
 | >= 8 to < 10       |     0 |
-| >= 10 to < 12      |     1 |
+| >= 10 to < 12      |     0 |
 | >= 12 to < 14      |     0 |
 | >= 14 to < 16      |     0 |
 | >= 16              |     2 |
@@ -58,10 +58,10 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              56 |           24 |
-| No           | No                    | Yes                    |              16 |            7 |
-| No           | Yes                   | No                     |               4 |            1 |
-| Yes          | No                    | No                     |               2 |            2 |
+| No           | No                    | No                     |              88 |           27 |
+| No           | No                    | Yes                    |              16 |            5 |
+| No           | Yes                   | No                     |               0 |            0 |
+| Yes          | No                    | No                     |               2 |            1 |
 | Yes          | No                    | Yes                    |               0 |            0 |
 | Yes          | Yes                   | No                     |               0 |            0 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
@@ -70,17 +70,13 @@ Table of Contents
 4. Detailed Control Set Information
 -----------------------------------
 
-+----------------------------+---------------------+-----------------------------+------------------+----------------+--------------+
-|        Clock Signal        |    Enable Signal    |       Set/Reset Signal      | Slice Load Count | Bel Load Count | Bels / Slice |
-+----------------------------+---------------------+-----------------------------+------------------+----------------+--------------+
-|  IFetch/mem/instr_reg[1]_2 |                     |                             |                1 |              1 |         1.00 |
-|  clk_IBUF_BUFG             | deb1/eqOp           |                             |                2 |              2 |         1.00 |
-|  clk_IBUF_BUFG             | IFetch/mem/MemWrite |                             |                1 |              2 |         2.00 |
-|  deb1/btns_0_BUFG          |                     | IFetch/mem/instr[5]_i_1_n_0 |                1 |              4 |         4.00 |
-|  clk_IBUF_BUFG             | IFetch/mem/RegWrite |                             |                1 |              4 |         4.00 |
-|  deb1/btns_0_BUFG          |                     |                             |                4 |             10 |         2.50 |
-|  deb1/btns_0_BUFG          |                     | deb2/AR[0]                  |                7 |             16 |         2.29 |
-|  clk_IBUF_BUFG             |                     |                             |               19 |             45 |         2.37 |
-+----------------------------+---------------------+-----------------------------+------------------+----------------+--------------+
++----------------+---------------+------------------+------------------+----------------+--------------+
+|  Clock Signal  | Enable Signal | Set/Reset Signal | Slice Load Count | Bel Load Count | Bels / Slice |
++----------------+---------------+------------------+------------------+----------------+--------------+
+|  clk_IBUF_BUFG | deb1/eqOp     |                  |                1 |              2 |         2.00 |
+|  deb1/CLK      |               |                  |                2 |              6 |         3.00 |
+|  deb1/CLK      |               | deb2/AR[0]       |                5 |             16 |         3.20 |
+|  clk_IBUF_BUFG |               |                  |               26 |             88 |         3.38 |
++----------------+---------------+------------------+------------------+----------------+--------------+
 
 

@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
-| Date             : Tue Apr 23 01:04:18 2024
+| Date             : Mon May 27 18:05:25 2024
 | Host             : DESKTOP-6I43JMK running 64-bit major release  (build 9200)
 | Command          : report_power -file mip_power_routed.rpt -pb mip_power_summary_routed.pb -rpx mip_power_routed.rpx
 | Design           : mip
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.090        |
+| Total On-Chip Power (W)  | 0.088        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.018        |
+| Dynamic (W)              | 0.016        |
 | Device Static (W)        | 0.072        |
 | Effective TJA (C/W)      | 5.0          |
 | Max Ambient (C)          | 84.6         |
@@ -52,18 +52,18 @@ Table of Contents
 +--------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
-| Clocks                   |     0.002 |        3 |       --- |             --- |
-| Slice Logic              |     0.001 |      275 |       --- |             --- |
-|   LUT as Logic           |     0.001 |      127 |     20800 |            0.61 |
-|   CARRY4                 |    <0.001 |       17 |      8150 |            0.21 |
+| Clocks                   |     0.001 |        3 |       --- |             --- |
+| Slice Logic              |    <0.001 |      245 |       --- |             --- |
+|   LUT as Logic           |    <0.001 |       76 |     20800 |            0.37 |
 |   LUT as Distributed RAM |    <0.001 |        4 |      9600 |            0.04 |
-|   Register               |    <0.001 |       78 |     41600 |            0.19 |
-|   BUFG                   |    <0.001 |        1 |        32 |            3.13 |
-|   Others                 |     0.000 |       19 |       --- |             --- |
-| Signals                  |     0.001 |      238 |       --- |             --- |
-| I/O                      |     0.014 |       33 |       106 |           31.13 |
+|   Register               |    <0.001 |      106 |     41600 |            0.25 |
+|   CARRY4                 |    <0.001 |       15 |      8150 |            0.18 |
+|   F7/F8 Muxes            |    <0.001 |        4 |     32600 |            0.01 |
+|   Others                 |     0.000 |       25 |       --- |             --- |
+| Signals                  |    <0.001 |      215 |       --- |             --- |
+| I/O                      |     0.013 |       33 |       106 |           31.13 |
 | Static Power             |     0.072 |          |           |                 |
-| Total                    |     0.090 |          |           |                 |
+| Total                    |     0.088 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -73,8 +73,8 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     0.014 |       0.004 |      0.010 |       NA    | Unspecified | NA         |
-| Vccaux    |       1.800 |     0.013 |       0.001 |      0.013 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.012 |       0.003 |      0.010 |       NA    | Unspecified | NA         |
+| Vccaux    |       1.800 |     0.013 |       0.000 |      0.013 |       NA    | Unspecified | NA         |
 | Vcco33    |       3.300 |     0.005 |       0.004 |      0.001 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -96,7 +96,7 @@ Table of Contents
 | User Input Data             | Confidence | Details                                                | Action                                                                                                             |
 +-----------------------------+------------+--------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
 | Design implementation state | High       | Design is routed                                       |                                                                                                                    |
-| Clock nodes activity        | Low        | User specified less than 75% of clocks                 | Provide missing clock activity with a constraint file, simulation results or by editing the "By Clock Domain" view |
+| Clock nodes activity        | Medium     | More than 5% of clocks are missing user specification  | Provide missing clock activity with a constraint file, simulation results or by editing the "By Clock Domain" view |
 | I/O nodes activity          | Low        | More than 75% of inputs are missing user specification | Provide missing input activity with simulation results or by editing the "By Resource Type -> I/Os" view           |
 | Internal nodes activity     | Medium     | User specified less than 25% of internal nodes         | Provide missing internal nodes activity with simulation results or by editing the "By Resource Type" views         |
 | Device models               | High       | Device models are Production                           |                                                                                                                    |
@@ -139,13 +139,10 @@ Table of Contents
 3.1 By Hierarchy
 ----------------
 
-+----------+-----------+
-| Name     | Power (W) |
-+----------+-----------+
-| mip      |     0.018 |
-|   IFetch |     0.002 |
-|     mem  |     0.002 |
-|   ssd    |     0.001 |
-+----------+-----------+
++------+-----------+
+| Name | Power (W) |
++------+-----------+
+| mip  |     0.016 |
++------+-----------+
 
 

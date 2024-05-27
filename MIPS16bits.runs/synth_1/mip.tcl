@@ -70,6 +70,7 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param chipscope.maxJobs 4
 set_param xicom.use_bs_reader 1
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a35tcpg236-1
@@ -96,6 +97,10 @@ read_vhdl -library xil_defaultlib {
   {C:/Users/Zach/Desktop/ComputerS/year2/semester II/Computer Architecture/MIPS16bits/MIPS16bits.srcs/sources_1/new/instructionFetch.vhd}
   {C:/Users/Zach/Desktop/ComputerS/year2/semester II/Computer Architecture/MIPS16bits/MIPS16bits.srcs/sources_1/new/mem.vhd}
   {C:/Users/Zach/Desktop/ComputerS/year2/semester II/Computer Architecture/MIPS16bits/MIPS16bits.srcs/sources_1/new/memory.vhd}
+  {C:/Users/Zach/Desktop/ComputerS/year2/semester II/Computer Architecture/MIPS16bits/MIPS16bits.srcs/sources_1/new/pipeline_IF_ID.vhd}
+  {C:/Users/Zach/Desktop/ComputerS/year2/semester II/Computer Architecture/MIPS16bits/MIPS16bits.srcs/sources_1/new/pipeline_ID_EX.vhd}
+  {C:/Users/Zach/Desktop/ComputerS/year2/semester II/Computer Architecture/MIPS16bits/MIPS16bits.srcs/sources_1/new/pipeline_EX_MEM.vhd}
+  {C:/Users/Zach/Desktop/ComputerS/year2/semester II/Computer Architecture/MIPS16bits/MIPS16bits.srcs/sources_1/new/pipeline_MEM_WB.vhd}
   {C:/Users/Zach/Desktop/ComputerS/year2/semester II/Computer Architecture/MIPS16bits/MIPS16bits.srcs/sources_1/new/registerFile.vhd}
   {C:/Users/Zach/Desktop/ComputerS/year2/semester II/Computer Architecture/MIPS16bits/MIPS16bits.srcs/sources_1/new/mip.vhd}
 }
